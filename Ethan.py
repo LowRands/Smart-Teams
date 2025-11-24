@@ -1,23 +1,63 @@
+
+
 import os
 import time 
-allowed_usernames = ["Ethan", "Franklin", "Daniel", "Sami", "Rio"]
 
-login_attempts = 0
-def scan_username():
-    global login_attempts
 
-while login_attempts < 3:
-    time.sleep(0.5)
-    os.system('cls')
+def add_usernames():
+    usernames = set()  # Using a set to avoid duplicates automatically
 
-    username = input ("Enter Your Username: ")
-    login_attempts += 1
+    print("=== Username Registration System ===")
+    print("Type 'exit' to stop adding usernames.\n")
 
-    if username in allowed_usernames:
-        print(f"Welcome, {username}!")
-        print("You are in")
-        login_attempts = 0
-        break
+    while True:
+        username = input("Enter a new username: ").strip()
 
-    else:
-        print("Invalid Username, Try Again")       
+        # Exit condition
+        if username.lower() == "exit":
+            login_attempts = 0
+
+            while login_attempts < 3:
+                    time.sleep(0.5)
+                    os.system('cls')
+
+                    username = input ("Enter Your Username: ")
+                    login_attempts += 1
+
+                    if username in add_usernames:
+                        print(f"Welcome, {username}!")
+                        print("You are in")
+                        login_attempts = 0
+                        break
+                    else:
+                        print("Invalid Username, Try Again")
+            break
+
+        # Validation: non-empty and alphanumeric
+        if not username:
+            print("❌ Username cannot be empty.")
+            continue
+        if not username.isalnum():
+            print("❌ Username must be alphanumeric (letters and numbers only).")
+            continue
+        # Check for duplicates
+        if username in usernames:
+            print(f"⚠️ Username '{username}' already exists.")
+        else:
+            usernames.add(username)
+            print(f"✅ Username '{username}' added successfully.")
+    # Display all usernames
+    #print("\n=== Registered Usernames ===")
+    #if usernames:
+       # for user in sorted(usernames):
+      #      print(f"- {user}")
+   # else:
+      #Er  print("No usernames were added.")
+
+if __name__ == "__main__":
+    try:
+        add_usernames()
+    except KeyboardInterrupt:
+        print("\nProgram interrupted by user.")
+
+
