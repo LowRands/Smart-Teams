@@ -19,12 +19,12 @@ def run_verification_game():
     print("To verify you're human, answer this question: ")
 
     # Simple addition verification question
-    question = "\nWhat is 5 + 7? "
+    question = "\nWhat is 5 + 7?"
     correct_answer = "\n12"
 
-    user_answer = input(question)
+    user_answer = input(question) 
 
     if user_answer.strip() == correct_answer:
-        print("Verification successful. Access granted!")
+        print("Verification successful. Access granted!\n")
     else:
-        print("Verification failed. Access denied.")
+        print("Verification failed. Access denied.\n") 
