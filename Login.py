@@ -77,6 +77,11 @@ def add_Passwords():
 
                     password = input ("Enter Your Password: ")
                     login_attempts += 1
+                    if login_attempts > 3:
+                        print("You are locked out for 30 seconds!")
+                        time.sleep(30)
+                        break
+
 
                     if password in add_Passwords:
                         print("You are in")
